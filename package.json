@@ -2,6 +2,7 @@
   "name": "sipemusic",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -10,5 +11,8 @@
   },
   "dependencies": {
     "astro": "^5.16.15"
+  },
+  "devDependencies": {
+    "sass": "^1.97.3"
   }
 }

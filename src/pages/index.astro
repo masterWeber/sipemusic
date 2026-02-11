@@ -1,11 +1,385 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import {Image} from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import logoBlack from '../assets/logo_black_1.webp'
+import layer012 from '../assets/layer_01_2.webp'
+import vkmLogo from '../assets/vkm.webp'
+import ymLogo from '../assets/ym.webp'
+import shadow from '../assets/shadow.webp'
+import douglasLogo from '../assets/douglas-logo.png'
+import yandexAfishaLogo from '../assets/yandex-afisha-logo.png'
+import afishaLogo from '../assets/afisha-logo.png'
+import twoXTwoLogo from '../assets/2x2-logo.png'
+import tonnLogo from '../assets/16-tonn-logo.webp'
 ---
 
 <Layout>
-	<Welcome />
+    <div id="scene" class="page">
+        <header class="header" data-depth="0.1">
+            <span class="header__glow">S I P E</span>
+            <h1 class="header__title">S I P E</h1>
+        </header>
+        <div class="hero">
+            <Image class="hero__logo" src={logoBlack} alt="SIPE Logo" width={960} data-depth="0.2"/>
+            <Image class="hero__shadow" src={shadow} alt="SIPE Photo" width={862}/>
+            <Image class="hero__photo" src={layer012} alt="SIPE Photo" width={445}/>
+            <a class="hero__button button button--large button--accent" href="#concert">КУПИТЬ БИЛЕТЫ</a>
+        </div>
+
+        <main class="main" data-depth="0.1">
+            <div class="headline">
+                <span class="accent">КОНЦЕРТЫ</span>
+            </div>
+            <div class="main__concert" id="concert">
+                <p class="text"><span class="accent">СПБ</span> / Дуглас / <span class="accent">26 апреля</span> /
+                    начало в 19:00
+                </p>
+                <a class="button" data-text="КУПИТЬ БИЛЕТЫ"
+                   href="https://ticketscloud.com/v1/widgets/common?token=eyJhbGciOiJIUzI1NiIsImlzcyI6InRpY2tldHNjbG91ZC5ydSIsInR5cCI6IkpXVCJ9.eyJwIjoiNjA4OTM5YzEyYTk1NzhmNTk1OGYyYjU2In0.9zXVU5t0x-sK410B4DsyqBmMD_E-GJwyHOr-L-bU1_4&lang=ru&event=69749345076cdbd90e027e5d&s=1"
+                   target="_blank">КУПИТЬ БИЛЕТЫ</a>
+            </div>
+            <div class="main__concert">
+                <p class="text"><span class="accent">МСК</span> / 16 тонн Арбат / <span class="accent">30 апреля</span>
+                    / начало в 19:00
+                </p>
+                <a class="button" data-text="КУПИТЬ БИЛЕТЫ"
+                   href=" https://ticketscloud.com/v1/widgets/common?token=eyJhbGciOiJIUzI1NiIsImlzcyI6InRpY2tldHNjbG91ZC5ydSIsInR5cCI6IkpXVCJ9.eyJwIjoiNjA4OTM5YzEyYTk1NzhmNTk1OGYyYjU2In0.9zXVU5t0x-sK410B4DsyqBmMD_E-GJwyHOr-L-bU1_4&lang=ru&event=69749587f23fa98e6a47e14d&s=1"
+                   target="_blank">КУПИТЬ
+                    БИЛЕТЫ</a>
+            </div>
+        </main>
+
+        <footer class="footer" data-depth="0.1">
+            <div class="music-platforms">
+                <a href="https://vk.com/sipe_music" target="_blank">
+                    <Image src={vkmLogo} alt="Vk Music Logo" width={115}/>
+                </a>
+                <a href="https://music.yandex.ru/artist/984216?ref_id=BAC16683-8681-4F67-A048-A71D78587C59"
+                   target="_blank">
+                    <Image src={ymLogo} alt="Yandex Music Logo" width={148}/>
+                </a>
+            </div>
+            <div class="partners">
+                <Image src={douglasLogo} alt="douglas logo" width={60}/>
+                <Image src={yandexAfishaLogo} alt="yandex afisha logo" width={140}/>
+                <Image src={afishaLogo} alt="afisha logo" width={100}/>
+                <Image src={twoXTwoLogo} alt="2x2 logo" width={80}/>
+                <Image src={tonnLogo} alt="16 tonn logo" width={50}/>
+            </div>
+        </footer>
+    </div>
 </Layout>
+
+<script>
+  const initHeroButton = () => {
+    const heroButton = document.querySelector('.hero__button')
+    if (!heroButton) return
+
+    const getScrollTop = () =>
+      window.scrollY ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0
+
+    const onScroll = () => {
+      const scrollTop = getScrollTop()
+      heroButton.classList.toggle('hero__button--hidden', scrollTop >= 100)
+    }
+
+    onScroll()
+    window.addEventListener('scroll', onScroll, {passive: true})
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroButton)
+  } else {
+    initHeroButton()
+  }
+</script>
+
+<style lang="scss">
+  .page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    background: #DFDFDF;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .header {
+    position: relative;
+    padding: 32px 45px 0;
+
+    &__title {
+      margin: 0;
+      font-size: 225px;
+      font-weight: 400;
+      line-height: 80%;
+      letter-spacing: 0;
+      color: #A50F0E;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 200px;
+      }
+    }
+
+    &__glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      margin: 0;
+      font-size: 200px;
+      font-weight: 400;
+      line-height: 80%;
+      letter-spacing: 0;
+      color: #A50F0E;
+      text-align: center;
+      filter: blur(90px);
+      transform: translateX(-50%);
+    }
+  }
+
+  .hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 668px;
+    box-sizing: border-box;
+
+    @media (max-width: 860px) {
+      height: auto;
+    }
+
+    &__logo {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+
+      @media (max-width: 860px) {
+        width: 600px;
+        height: auto;
+      }
+    }
+
+    &__shadow {
+      z-index: 2;
+      position: absolute;
+      top: -50px;
+      opacity: 0.15;
+
+      @media (max-width: 860px) {
+        width: 660px;
+        height: auto;
+      }
+    }
+
+    &__photo {
+      z-index: 3;
+
+      @media (max-width: 860px) {
+        width: 345px;
+        height: auto;
+      }
+    }
+
+    &__button {
+      z-index: 4;
+      position: absolute !important;
+      top: 50%;
+      transition: all 0.2s ease !important;
+
+      &:hover {
+        scale: 1.1;
+      }
+
+      @media (min-height: 1100px) {
+        display: none;
+      }
+    }
+
+    &__button--hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    padding: 16px 0;
+    border-top: 0.5px solid #AEAEAE;
+
+    &__concert {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      @media (max-width: 860px) {
+        flex-direction: column;
+        text-align: center;
+        line-height: 1;
+      }
+    }
+  }
+
+  .headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1;
+
+    &__arrow {
+      margin-left: -10px;
+    }
+  }
+
+  .text {
+    margin: 0;
+    font-size: 48px;
+  }
+
+  .button {
+    padding: 12px 22px;
+    font-family: 'LDRCondensed2.0', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 400;
+    color: #F5F5F5;
+    background: #2C2C2C;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-shadow: none;
+
+    &--accent {
+      background: #A50F0E;
+    }
+
+    &--large {
+      font-size: 48px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    padding: 29px;
+  }
+
+  .music-platforms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 66px;
+  }
+
+  .partners {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .accent {
+    color: #A50F0E;
+  }
+
+  .button::before,
+  .button::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .button::before {
+    color: #ff4040;
+    transform: translate(0, 0);
+    mix-blend-mode: screen;
+  }
+
+  .button::after {
+    color: #4dd0ff;
+    transform: translate(0, 0);
+    mix-blend-mode: screen;
+  }
+
+  .button:hover {
+    box-shadow: 0 4px 12px rgba(165, 15, 14, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .button:hover::before {
+    opacity: 0.75;
+    animation: glitch-left 0.7s steps(2, end) infinite;
+  }
+
+  .button:hover::after {
+    opacity: 0.75;
+    animation: glitch-right 0.7s steps(2, end) infinite;
+  }
+
+  @keyframes glitch-left {
+    0% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(-2px, -1px);
+    }
+    40% {
+      transform: translate(2px, 1px);
+    }
+    60% {
+      transform: translate(-1px, 2px);
+    }
+    80% {
+      transform: translate(1px, -2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes glitch-right {
+    0% {
+      transform: translate(0, 0);
+    }
+    20% {
+      transform: translate(2px, 1px);
+    }
+    40% {
+      transform: translate(-2px, -1px);
+    }
+    60% {
+      transform: translate(1px, -2px);
+    }
+    80% {
+      transform: translate(-1px, 2px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+</style>
