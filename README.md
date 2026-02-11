@@ -1,46 +1,54 @@
-# Astro Starter Kit: Basics
+# SIPE MUSIC
 
+Официальный сайт проекта SIPE. Пространство для экспериментов, поиска и вдохновения, где музыка — это бесконечный путь.
+
+Сайт представляет собой лендинг с информацией о предстоящих концертах, ссылками на музыкальные платформы и интерактивным параллакс-эффектом.
+
+## 🚀 Стек технологий
+
+- **Фреймворк:** [Astro v5](https://astro.build/)
+- **Стилизация:** Sass (SCSS)
+- **Интерактив:** TypeScript (параллакс-эффект, управление скроллом)
+- **Счётчики:** Top.Mail.Ru (настроен через переменные окружения)
+
+## 🛠 Установка и запуск
+
+1. **Клонируйте репозиторий:**
+   ```sh
+   git clone <repository-url>
+   cd sipemusic
+   ```
+
+2. **Установите зависимости:**
+   ```sh
+   npm install
+   ```
+
+3. **Настройте переменные окружения:**
+   Создайте файл `.env` в корне проекта (на основе `.env.example`):
+   ```env
+   PUBLIC_MAIL_RU_ID=ваш_id_счетчика
+   ```
+
+4. **Запустите сервер для разработки:**
+   ```sh
+   npm run dev
+   ```
+   Сайт будет доступен по адресу `http://localhost:4321`.
+
+## 📦 Сборка и деплой
+
+Для создания оптимизированной сборки выполните:
 ```sh
-npm create astro@latest -- --template basics
+npm run build
+```
+Готовые файлы будут находиться в директории `dist/`.
+
+Для предварительного просмотра сборки:
+```sh
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 📜 Лицензия
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Проект распространяется под лицензией [MIT](LICENSE).
