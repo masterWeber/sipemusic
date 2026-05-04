@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Страница не найдена">
+    <div id="scene" class="page">
+        <header class="header" data-depth="0.1">
+            <span class="header__glow">404</span>
+            <h1 class="header__title">404</h1>
+        </header>
+
+        <main class="main" data-depth="0.1">
+            <div class="headline">
+                <span class="accent">СТРАНИЦА НЕ НАЙДЕНА</span>
+            </div>
+            <div class="content">
+                <p class="text">Похоже, вы забрели не туда</p>
+                <a class="button button--large button--accent" href="/">НА ГЛАВНУЮ</a>
+            </div>
+        </main>
+    </div>
+</Layout>
+
+<style lang="scss">
+  .page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    background: #DFDFDF;
+    border-radius: 2px;
+    overflow: hidden;
+    min-height: 80vh;
+    justify-content: center;
+  }
+
+  .header {
+    position: relative;
+    padding: 32px 45px 0;
+
+    &__title {
+      margin: 0;
+      font-size: 225px;
+      font-weight: 400;
+      line-height: 80%;
+      letter-spacing: 0;
+      color: #A50F0E;
+      text-align: center;
+
+      @media (max-width: 768px) {
+        font-size: 150px;
+      }
+    }
+
+    &__glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      margin: 0;
+      font-size: 200px;
+      font-weight: 400;
+      line-height: 80%;
+      letter-spacing: 0;
+      color: #A50F0E;
+      text-align: center;
+      filter: blur(90px);
+      transform: translateX(-50%);
+    }
+  }
+
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    padding: 64px 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+
+    @media (max-width: 768px) {
+        font-size: 40px;
+    }
+  }
+
+  .text {
+    margin: 0;
+    font-size: 32px;
+    text-align: center;
+    color: #2C2C2C;
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+    }
+  }
+
+  .accent {
+    color: #A50F0E;
+  }
+
+  .button {
+    padding: 12px 22px;
+    font-family: 'LDRCondensed2.0', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 400;
+    text-decoration: none;
+    color: #2C2C2C;
+    border: 1px solid #2C2C2C;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: transparent;
+
+    &:hover {
+      background: #2C2C2C;
+      color: #DFDFDF;
+    }
+
+    &--large {
+      padding: 16px 32px;
+      font-size: 48px;
+
+      @media (max-width: 768px) {
+        font-size: 32px;
+      }
+    }
+
+    &--accent {
+      background: #A50F0E;
+      color: #DFDFDF;
+      border-color: #A50F0E;
+
+      &:hover {
+        background: #2C2C2C;
+        border-color: #2C2C2C;
+      }
+    }
+  }
+</style>
