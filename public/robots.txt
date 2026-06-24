@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /docs
-Disallow: /riders
-
-Sitemap: https://sipemusic.ru/sitemap-index.xml
