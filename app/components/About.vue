@@ -51,24 +51,24 @@
 
 <script setup>
 const members = ref([
-  { image: '/photo/Антон.webp' },
+  { image: '/photo/Саша джу.webp' },
   { image: '/photo/Все.webp' },
-  { image: '/photo/сипе.webp' },
-  { image: '/photo/джу43.webp' },
-  { image: '/photo/Джу конц.webp' },
-  { image: '/photo/Дмитрий.webp' },
   { image: '/photo/конц.webp' },
+  { image: '/photo/конц4.webp' },
+  { image: '/photo/Джу конц.webp' },
   { image: '/photo/сашаконц.webp' },
+  { image: '/photo/сипе.webp' },
+  { image: '/photo/сашаконцспб.webp' },
+  { image: '/photo/джу43.webp' },
+  { image: '/photo/Дмитрий.webp' },
+  { image: '/photo/Антон.webp' },
   { image: '/photo/Олег.webp' },
   { image: '/photo/концмск.webp' },
   { image: '/photo/барабан.webp' },
   { image: '/photo/Виталь.webp' },
   { image: '/photo/автограф.webp' },
-  { image: '/photo/сашаконцспб.webp' },
-  { image: '/photo/конц4.webp' },
   { image: '/photo/концуцк.webp' },
   { image: '/photo/концфото.webp' },
-  { image: '/photo/Саша джу.webp' },
   { image: '/photo/все2.webp' },
 ])
 
