@@ -4,7 +4,7 @@
       <div class="about__text-block">
         <h2 class="section-title about__title">О проекте</h2>
         <p class="about__desc">
-          SIPE — это живой электронный проект на стыке электроники и атмосферы. Мы создаем звучание, которое рождается здесь и сейчас — на сцене, в моменте между светом, шумом и тишиной.
+          SIPE - российский проект на стыке индитроники и альтернативной музыки, где атмосферная электроника переплетается с живыми инструментами и мощным вокалом.
         </p>
       </div>
 
@@ -34,10 +34,6 @@
                 <div class="member-card__image-wrapper">
                   <img :src="member.image" :alt="member.name" class="member-card__image" draggable="false">
                 </div>
-                <div class="member-card__info">
-                  <span class="member-card__name">{{ member.name }}</span>
-                  <span class="member-card__role">{{ member.role }}</span>
-                </div>
               </div>
             </Slide>
           </Carousel>
@@ -55,26 +51,25 @@
 
 <script setup>
 const members = ref([
-  {
-    name: 'Артем',
-    role: 'Синтез / Продюсер',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    name: 'Иван',
-    role: 'Вокал / Лайв',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    name: 'Максим',
-    role: 'Гитара / Лайв',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    name: 'Денис',
-    role: 'Ударные',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop'
-  },
+  { image: '/photo/Антон.webp' },
+  { image: '/photo/Все.webp' },
+  { image: '/photo/сипе.webp' },
+  { image: '/photo/джу43.webp' },
+  { image: '/photo/Джу конц.webp' },
+  { image: '/photo/Дмитрий.webp' },
+  { image: '/photo/конц.webp' },
+  { image: '/photo/сашаконц.webp' },
+  { image: '/photo/Олег.webp' },
+  { image: '/photo/концмск.webp' },
+  { image: '/photo/барабан.webp' },
+  { image: '/photo/Виталь.webp' },
+  { image: '/photo/автограф.webp' },
+  { image: '/photo/сашаконцспб.webp' },
+  { image: '/photo/конц4.webp' },
+  { image: '/photo/концуцк.webp' },
+  { image: '/photo/концфото.webp' },
+  { image: '/photo/Саша джу.webp' },
+  { image: '/photo/все2.webp' },
 ])
 
 const carouselRef = ref(null)
@@ -100,6 +95,9 @@ function next() {
 $text-muted: #999999;
 
 .about {
+  z-index: 10;
+  position: relative;
+
   &__inner {
     display: flex;
     gap: 60px;

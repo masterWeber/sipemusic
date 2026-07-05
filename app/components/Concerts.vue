@@ -2,16 +2,23 @@
   <section class="section concerts" id="concerts">
     <div class="container">
       <h2 class="section-title concerts__title">Концерты</h2>
-      <div class="concerts__list">
+      <div v-if="loading" class="concerts__loading">Загрузка...</div>
+      <div v-else class="concerts__list">
         <div
-            v-for="(concert, index) in concerts"
-            :key="index"
-            class="concert-item"
+          v-for="(concert, index) in concerts"
+          :key="concert.id || index"
+          class="concert-item"
         >
-          <span class="concert-item__date">{{ concert.date }}</span>
+          <span class="concert-item__date">{{ formatDate(concert.date) }}</span>
           <span class="concert-item__city">{{ concert.city }}</span>
           <span class="concert-item__venue">{{ concert.venue }}</span>
-          <button class="concert-item__btn">Билеты</button>
+          <a
+            v-if="concert.ticketUrl"
+            :href="concert.ticketUrl"
+            target="_blank"
+            class="concert-item__btn"
+          >Билеты</a>
+          <button v-else class="concert-item__btn">Билеты</button>
         </div>
       </div>
     </div>
@@ -19,21 +26,47 @@
 </template>
 
 <script setup>
-const concerts = ref([
-  {date: '15 июн', city: 'Москва', venue: 'Powerhouse'},
-  {date: '28 июн', city: 'Санкт-Петербург', venue: 'Aurora Concert Hall'},
-  {date: '06 июл', city: 'Екатеринбург', venue: 'Tele-Club'},
-  {date: '13 июл', city: 'Нижний Новгород', venue: 'Milk Concert Hall'},
-  {date: '20 июл', city: 'Казань', venue: 'Urban'},
-  {date: '27 июл', city: 'Новосибирск', venue: 'Подземка'},
-  {date: '03 авг', city: 'Ростов-на-Дону', venue: 'More Music Club'},
-])
+const concerts = ref([])
+const loading = ref(true)
+
+async function fetchConcerts() {
+  try {
+    concerts.value = await $fetch('/api/concerts')
+  } catch {
+    concerts.value = [
+      { date: '2026-06-15', city: 'Москва', venue: 'Powerhouse' },
+      { date: '2026-06-28', city: 'Санкт-Петербург', venue: 'Aurora Concert Hall' },
+      { date: '2026-07-06', city: 'Екатеринбург', venue: 'Tele-Club' },
+      { date: '2026-07-13', city: 'Нижний Новгород', venue: 'Milk Concert Hall' },
+      { date: '2026-07-20', city: 'Казань', venue: 'Urban' },
+      { date: '2026-07-27', city: 'Новосибирск', venue: 'Подземка' },
+      { date: '2026-08-03', city: 'Ростов-на-Дону', venue: 'More Music Club' },
+    ]
+  } finally {
+    loading.value = false
+  }
+}
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr)
+  const day = date.getDate()
+  const months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+  return `${day} ${months[date.getMonth()]}`
+}
+
+fetchConcerts()
 </script>
 
 <style lang="scss" scoped>
 $text-muted: #999999;
 
 .concerts {
+  &__loading {
+    text-align: center;
+    color: $text-muted;
+    padding: 40px 0;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -93,6 +126,8 @@ $text-muted: #999999;
       cursor: pointer;
       justify-self: end;
       transition: all 0.3s;
+      text-decoration: none;
+      text-align: center;
 
       &:hover {
         background: #fff;

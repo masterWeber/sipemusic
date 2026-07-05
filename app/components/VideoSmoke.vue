@@ -101,6 +101,10 @@ onBeforeUnmount(() => {
   bottom: 0;
   width: 35vw;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    overflow: initial;
+  }
 }
 
 .smoke-wrapper--left {
@@ -119,6 +123,10 @@ onBeforeUnmount(() => {
   object-position: top center;
   mix-blend-mode: screen;
   opacity: 0;
+
+  @media (max-width: 768px) {
+    height: 100vw;
+  }
 }
 
 .smoke-wrapper--left .smoke-clip {

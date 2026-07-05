@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="merch__btn-wrapper">
-        <button class="button-primary">Купить</button>
+        <a href="https://vk.com/market-55019377?screen=group" target="_blank" class="button-primary">Купить</a>
       </div>
     </div>
   </section>
@@ -77,6 +77,9 @@ function next() {
 
 <style lang="scss" scoped>
 .merch {
+  position: relative;
+  z-index: 10;
+
   &__title {
     margin-top: 0;
   }
@@ -152,6 +155,7 @@ function next() {
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.3s;
+    text-decoration: none;
 
     &:hover {
       background: #fff;

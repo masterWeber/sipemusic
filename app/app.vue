@@ -1,16 +1,26 @@
 <template>
-  <div class="page">
-    <VideoSmoke />
-    <Header />
-    <Hero />
-    <About />
-    <Concerts />
-    <Merch />
-    <Footer />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <script setup>
+useHead({
+  titleTemplate: (title) => title ? `${title} — SIPE` : 'SIPE',
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+    { name: 'keywords', content: 'sipe, electronic music, concerts, music' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:site_name', content: 'SIPE' },
+    { property: 'og:description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+  ],
+  link: [
+    { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' },
+  ],
+})
 </script>
 
 <style lang="scss">
@@ -47,6 +57,7 @@ body {
 }
 
 .section {
+  scroll-margin-top: 80px;
   padding: 80px 0;
 
   @media (max-width: 768px) {
@@ -102,15 +113,5 @@ body {
   &::after {
     transform: translate(-50%, -50%) rotate(135deg);
   }
-}
-
-</style>
-
-<style lang="scss" scoped>
-.page {
-  position: relative;
-  font-family: var(--font-main);
-  font-weight: 300;
-  line-height: 1.5;
 }
 </style>

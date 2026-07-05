@@ -16,6 +16,18 @@ function closeMobile() {
   mobileOpen.value = false
 }
 
+function smoothScroll(e: MouseEvent) {
+  const link = (e.currentTarget as HTMLAnchorElement)
+  const href = link.getAttribute('href')
+  if (!href || !href.startsWith('#')) return
+  e.preventDefault()
+  const target = document.querySelector(href)
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
+  closeMobile()
+}
+
 watch(mobileOpen, (open) => {
   document.body.style.overflow = open ? 'hidden' : ''
 })
@@ -41,20 +53,20 @@ onUnmounted(() => {
         <span class="cross"></span>
       </button>
       <nav class="nav">
-        <a href="#about" class="nav__link" @click="closeMobile">О проекте</a>
-        <a href="#concerts" class="nav__link" @click="closeMobile">Концерты</a>
-        <a href="#merch" class="nav__link" @click="closeMobile">Мерч</a>
-        <a href="#contacts" class="nav__link" @click="closeMobile">Контакты</a>
+        <a href="#about" class="nav__link" @click="smoothScroll">О проекте</a>
+        <a href="#concerts" class="nav__link" @click="smoothScroll">Концерты</a>
+        <a href="#merch" class="nav__link" @click="smoothScroll">Мерч</a>
+        <a href="#contacts" class="nav__link" @click="smoothScroll">Контакты</a>
       </nav>
     </div>
     <Teleport to="body">
       <div class="mobile-menu" :class="{ 'mobile-menu--open': mobileOpen }">
         <div class="mobile-menu__backdrop" @click="closeMobile"></div>
         <nav class="mobile-menu__nav">
-          <a href="#about" class="mobile-menu__link" @click="closeMobile">О проекте</a>
-          <a href="#concerts" class="mobile-menu__link" @click="closeMobile">Концерты</a>
-          <a href="#merch" class="mobile-menu__link" @click="closeMobile">Мерч</a>
-          <a href="#contacts" class="mobile-menu__link" @click="closeMobile">Контакты</a>
+          <a href="#about" class="mobile-menu__link" @click="smoothScroll">О проекте</a>
+          <a href="#concerts" class="mobile-menu__link" @click="smoothScroll">Концерты</a>
+          <a href="#merch" class="mobile-menu__link" @click="smoothScroll">Мерч</a>
+          <a href="#contacts" class="mobile-menu__link" @click="smoothScroll">Контакты</a>
         </nav>
       </div>
     </Teleport>
