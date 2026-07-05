@@ -26,26 +26,7 @@
 </template>
 
 <script setup>
-const concerts = ref([])
-const loading = ref(true)
-
-async function fetchConcerts() {
-  try {
-    concerts.value = await $fetch('/api/concerts')
-  } catch {
-    concerts.value = [
-      { date: '2026-06-15', city: 'Москва', venue: 'Powerhouse' },
-      { date: '2026-06-28', city: 'Санкт-Петербург', venue: 'Aurora Concert Hall' },
-      { date: '2026-07-06', city: 'Екатеринбург', venue: 'Tele-Club' },
-      { date: '2026-07-13', city: 'Нижний Новгород', venue: 'Milk Concert Hall' },
-      { date: '2026-07-20', city: 'Казань', venue: 'Urban' },
-      { date: '2026-07-27', city: 'Новосибирск', venue: 'Подземка' },
-      { date: '2026-08-03', city: 'Ростов-на-Дону', venue: 'More Music Club' },
-    ]
-  } finally {
-    loading.value = false
-  }
-}
+const { data: concerts, pending: loading } = await useFetch('/api/concerts')
 
 function formatDate(dateStr) {
   const date = new Date(dateStr)
@@ -53,8 +34,6 @@ function formatDate(dateStr) {
   const months = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
   return `${day} ${months[date.getMonth()]}`
 }
-
-fetchConcerts()
 </script>
 
 <style lang="scss" scoped>
