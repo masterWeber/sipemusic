@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       },
       charset: 'utf-8',
       link: [
-        { rel: 'canonical', href: 'https://sipe.live' },
+        { rel: 'canonical', href: 'https://sipemusic.com' },
       ],
     },
   },

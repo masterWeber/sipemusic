@@ -6,18 +6,26 @@
 
 <script setup>
 useHead({
-  titleTemplate: (title) => title ? `${title} — SIPE` : 'SIPE',
+  titleTemplate: (title) => title ? `${title} — SIPE MUSIC` : 'SIPE MUSIC',
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { name: 'description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+    { name: 'title', content: 'SIPE MUSIC' },
+    { name: 'description', content: 'Проект Sipe это не просто музыка, это целая вселенная, где каждый трек живёт своей жизнью. Это пространство для экспериментов, поиска и вдохновения, где не бывает конечной точки. Музыка здесь это путь, который никогда не заканчивается.' },
     { name: 'keywords', content: 'sipe, electronic music, concerts, music' },
     { property: 'og:type', content: 'website' },
-    { property: 'og:site_name', content: 'SIPE' },
-    { property: 'og:description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+    { property: 'og:site_name', content: 'SIPE MUSIC' },
+    { property: 'og:url', content: 'https://sipemusic.com' },
+    { property: 'og:title', content: 'SIPE MUSIC' },
+    { property: 'og:description', content: 'Проект Sipe это не просто музыка, это целая вселенная, где каждый трек живёт своей жизнью. Это пространство для экспериментов, поиска и вдохновения, где не бывает конечной точки. Музыка здесь это путь, который никогда не заканчивается.' },
+    { property: 'og:image', content: 'https://sipemusic.com/og-image.webp' },
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:description', content: 'SIPE — electronic music project. Concerts, releases and news.' },
+    { name: 'twitter:url', content: 'https://sipemusic.com' },
+    { name: 'twitter:title', content: 'SIPE MUSIC' },
+    { name: 'twitter:description', content: 'Проект Sipe это не просто музыка, это целая вселенная, где каждый трек живёт своей жизнью. Это пространство для экспериментов, поиска и вдохновения, где не бывает конечной точки. Музыка здесь это путь, который никогда не заканчивается.' },
+    { name: 'twitter:image', content: 'https://sipemusic.com/og-image.webp' },
   ],
   link: [
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
     { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' },
   ],
 })
