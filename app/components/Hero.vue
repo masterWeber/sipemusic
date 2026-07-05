@@ -1,6 +1,6 @@
 <template>
   <section class="hero">
-    <video class="hero__bg" autoplay loop muted playsinline>
+    <video class="hero__bg" autoplay loop muted playsinline poster="/hero-bg-poster.jpg">
       <source src="/hero-bg.webm" type="video/webm">
     </video>
     <div class="hero__overlay"></div>
