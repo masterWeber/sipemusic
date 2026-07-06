@@ -1,6 +1,8 @@
 <template>
   <section class="hero">
-    <video class="hero__bg" autoplay loop muted playsinline poster="/hero-bg-poster.jpg">
+    <div class="hero__poster"></div>
+    <video ref="videoRef" class="hero__bg" :class="{ 'hero__bg--ready': videoReady }" autoplay loop muted playsinline preload="auto" poster="/hero-bg-poster.jpg" disablepictureinpicture>
+      <source src="/hero-bg.mp4" type="video/mp4">
       <source src="/hero-bg.webm" type="video/webm">
     </video>
     <div class="hero__overlay"></div>
@@ -42,6 +44,26 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const videoRef = ref(null)
+const videoReady = ref(false)
+
+onMounted(() => {
+  const video = videoRef.value
+  if (!video) return
+
+  const show = () => {
+    videoReady.value = true
+  }
+
+  if (video.readyState >= 3) {
+    show()
+  } else {
+    video.addEventListener('playing', show, { once: true })
+    setTimeout(show, 1000)
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -56,6 +78,17 @@
   overflow: hidden;
   aspect-ratio: 16 / 6;
 
+  &__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/hero-bg-poster.jpg') center / cover no-repeat;
+    z-index: 0;
+    filter: brightness(0.6);
+  }
+
   &__bg {
     position: absolute;
     top: 0;
@@ -65,6 +98,12 @@
     object-fit: cover;
     z-index: 0;
     filter: brightness(0.6);
+    opacity: 0;
+    transition: opacity 0.6s;
+
+    &--ready {
+      opacity: 1;
+    }
   }
 
   &__overlay {

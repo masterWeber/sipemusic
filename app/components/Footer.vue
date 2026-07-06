@@ -7,12 +7,10 @@
           <div class="footer__info">
             <span class="footer__label">концерты / сотрудничество</span>
             <a href="mailto:sipe.booking@gmail.com" class="footer__link">sipe.booking@gmail.com</a>
-            <a href="mailto:sipemsk@gmail.com" class="footer__link">sipemsk@gmail.com</a>
           </div>
         </div>
         <div class="footer__col footer__col--center">
           <div class="footer__socials">
-            <span class="footer__social-label">Быстрый доступ</span>
             <div class="footer__icons">
               <a href="https://t.me/sipemusic" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="Telegram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
@@ -30,14 +28,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
                   <path d="M0 0h24v24H0z" fill="none" />
                   <path fill="currentColor" d="M19.607 6.995c-.076-.298-.292-.523-.539-.592C18.63 6.28 16.501 6 12.001 6s-6.628.28-7.069.403c-.244.068-.46.293-.537.592c-.109.424-.394 2.2-.394 5.005s.285 4.58.394 5.006c.076.297.292.522.538.59C5.373 17.72 7.5 18 12 18s6.629-.28 7.069-.403c.244-.068.46-.293.537-.592c.11-.424.394-2.205.394-5.005s-.285-4.58-.394-5.005m1.937-.497C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.897 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0 3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.108 4 12.001 4 12.001 4s5.896 0 7.605.476c.944.266 1.687 1.04 1.938 2.022M10.001 15.5v-7l6 3.5z" />
-                </svg>
-              </a>
-              <a href="https://band.link/sipemuse" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="BandLink">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24px" height="24px" viewBox="-44 -44 600.000000 600.000000" preserveAspectRatio="xMidYMid meet">
-
-                  <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                    <path d="M1725 5010 c-453 -30 -858 -214 -1180 -534 -278 -278 -447 -605 -522 -1016 -15 -87 -17 -231 -20 -1728 l-4 -1634 1193 5 c1259 5 1272 5 1523 52 470 89 911 292 1298 597 132 104 370 344 473 478 289 373 475 772 568 1217 60 286 59 262 63 1466 l4 1107 -1643 -2 c-904 0 -1692 -4 -1753 -8z m813 -873 c12 -12 109 -205 217 -427 108 -223 207 -416 220 -429 21 -21 60 -29 484 -92 254 -38 471 -74 482 -79 26 -15 59 -69 59 -98 0 -13 -6 -35 -14 -50 -8 -15 -162 -174 -344 -353 -214 -212 -331 -335 -336 -353 -4 -17 22 -196 69 -475 41 -247 75 -461 75 -477 0 -71 -76 -128 -140 -105 -17 5 -207 105 -424 220 -289 155 -403 211 -427 211 -25 0 -139 -56 -429 -211 -217 -116 -407 -215 -422 -219 -38 -12 -93 6 -118 37 -14 17 -20 40 -20 72 0 25 34 243 75 484 58 344 72 444 64 465 -6 15 -163 180 -350 368 -335 336 -339 341 -339 381 0 52 37 99 88 112 20 5 230 38 465 72 286 42 438 69 456 80 21 12 71 108 226 429 112 229 212 425 228 440 43 45 111 44 155 -3z"/>
-                  </g>
                 </svg>
               </a>
               <a href="https://vk.com/sipe_music" target="_blank" rel="noopener noreferrer" class="footer__icon" aria-label="VK">

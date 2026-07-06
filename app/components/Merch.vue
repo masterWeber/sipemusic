@@ -121,15 +121,14 @@ function next() {
     }
 
     :deep(.carousel__slide) {
-      aspect-ratio: 3/4;
       background: #111;
       overflow: hidden;
       padding: 0;
 
       img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
+        display: block;
         filter: grayscale(100%);
         transition: filter 0.3s;
       }
