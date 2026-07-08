@@ -14,6 +14,7 @@
             class="gallery-nav gallery-nav--prev"
             :disabled="carouselRef?.data?.currentSlide === 0"
             @click="prev"
+            aria-label="Предыдущий"
           ></button>
 
           <Carousel
@@ -30,18 +31,21 @@
             class="about__carousel"
           >
             <Slide v-for="(member, index) in members" :key="index">
-              <div class="member-card">
+              <div class="member-card" @click="openLightbox(index)">
                 <div class="member-card__image-wrapper">
-                  <img :src="member.image" :alt="member.name" class="member-card__image" draggable="false">
+                  <img :src="member.image" :alt="member.name" class="member-card__image" draggable="false" loading="lazy">
                 </div>
               </div>
             </Slide>
           </Carousel>
 
+          <Lightbox :images="memberImages" v-model="lightboxIndex" />
+
           <button
             class="gallery-nav gallery-nav--next"
             :disabled="carouselRef?.data?.currentSlide >= carouselRef?.data?.maxSlide"
             @click="next"
+            aria-label="Следующий"
           ></button>
         </div>
       </div>
@@ -51,30 +55,37 @@
 
 <script setup>
 const members = ref([
-  { image: '/photo/Саша джу.webp' },
-  { image: '/photo/Все.webp' },
-  { image: '/photo/конц.webp' },
-  { image: '/photo/конц4.webp' },
-  { image: '/photo/Джу конц.webp' },
-  { image: '/photo/сашаконц.webp' },
-  { image: '/photo/сипе.webp' },
-  { image: '/photo/сашаконцспб.webp' },
-  { image: '/photo/джу43.webp' },
-  { image: '/photo/Дмитрий.webp' },
-  { image: '/photo/Антон.webp' },
-  { image: '/photo/Олег.webp' },
-  { image: '/photo/концмск.webp' },
-  { image: '/photo/барабан.webp' },
-  { image: '/photo/Виталь.webp' },
-  { image: '/photo/автограф.webp' },
-  { image: '/photo/концуцк.webp' },
-  { image: '/photo/концфото.webp' },
-  { image: '/photo/все2.webp' },
+  { image: '/photo/Саша джу.webp', name: 'Саша Джу' },
+  { image: '/photo/Все.webp', name: 'Группа SIPE' },
+  { image: '/photo/конц.webp', name: 'Концерт SIPE' },
+  { image: '/photo/конц4.webp', name: 'Концерт SIPE' },
+  { image: '/photo/Джу конц.webp', name: 'Джу на концерте' },
+  { image: '/photo/сашаконц.webp', name: 'Саша на концерте' },
+  { image: '/photo/сипе.webp', name: 'SIPE' },
+  { image: '/photo/сашаконцспб.webp', name: 'Концерт в СПб' },
+  { image: '/photo/джу43.webp', name: 'Джу' },
+  { image: '/photo/Дмитрий.webp', name: 'Дмитрий' },
+  { image: '/photo/Антон.webp', name: 'Антон' },
+  { image: '/photo/Олег.webp', name: 'Олег' },
+  { image: '/photo/концмск.webp', name: 'Концерт в Москве' },
+  { image: '/photo/барабан.webp', name: 'Барабанщик' },
+  { image: '/photo/Виталь.webp', name: 'Виталий' },
+  { image: '/photo/автограф.webp', name: 'Автограф-сессия' },
+  { image: '/photo/концуцк.webp', name: 'Концерт в Уцке' },
+  { image: '/photo/концфото.webp', name: 'Фото с концерта' },
+  { image: '/photo/все2.webp', name: 'Группа SIPE' },
 ])
 
 const carouselRef = ref(null)
 const curSlide = ref(0)
 const perView = ref(4)
+const lightboxIndex = ref(null)
+
+const memberImages = computed(() => members.value.map(m => m.image))
+
+function openLightbox(index) {
+  lightboxIndex.value = index
+}
 
 const breakpoints = {
   0: { itemsToShow: 1 },
@@ -83,11 +94,13 @@ const breakpoints = {
 }
 
 function prev() {
-  carouselRef.value?.prev()
+  const c = carouselRef.value
+  if (c && c.data?.currentSlide > 0) c.prev()
 }
 
 function next() {
-  carouselRef.value?.next()
+  const c = carouselRef.value
+  if (c && c.data?.currentSlide < c.data?.maxSlide) c.next()
 }
 </script>
 

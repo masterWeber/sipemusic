@@ -8,6 +8,7 @@
               class="gallery-nav gallery-nav--prev"
               :disabled="carouselRef?.data?.currentSlide === 0"
               @click="prev"
+              aria-label="Предыдущий"
           ></button>
 
           <Carousel
@@ -24,14 +25,17 @@
               class="merch__carousel"
           >
             <Slide v-for="(item, index) in merchItems" :key="index">
-              <img :src="item.image" alt="Футболка" draggable="false">
+              <img :src="item.image" :alt="`Мерч SIPE ${index + 1}`" draggable="false" loading="lazy" @click="openLightbox(index)" style="cursor: pointer">
             </Slide>
           </Carousel>
+
+          <Lightbox :images="merchImages" v-model="lightboxIndex" />
 
           <button
               class="gallery-nav gallery-nav--next"
               :disabled="carouselRef?.data?.currentSlide >= carouselRef?.data?.maxSlide"
               @click="next"
+              aria-label="Следующий"
           ></button>
         </div>
       </div>
@@ -55,11 +59,18 @@ const images = [
   '19ovFZMdx0WlaJIoiPwA1SgNXpnSEekOW1tQYzFuzL_L85D70ovJBkCEKDcQX5LmnWPFOL9NUHdOZH_a2NJ3JFYS.jpg',
 ]
 
-const merchItems = ref(images.map(file => ({image: `/merch/${file}`})))
+const merchItems = ref(images.map(file => ({image: `/merch/${file.replace('.jpg', '.webp')}`})))
 
 const carouselRef = ref(null)
 const curSlide = ref(0)
 const perView = ref(5)
+const lightboxIndex = ref(null)
+
+const merchImages = computed(() => merchItems.value.map(i => i.image))
+
+function openLightbox(index) {
+  lightboxIndex.value = index
+}
 
 const breakpoints = {
   0: {itemsToShow: 2},
@@ -67,11 +78,13 @@ const breakpoints = {
 }
 
 function prev() {
-  carouselRef.value?.prev()
+  const c = carouselRef.value
+  if (c && c.data?.currentSlide > 0) c.prev()
 }
 
 function next() {
-  carouselRef.value?.next()
+  const c = carouselRef.value
+  if (c && c.data?.currentSlide < c.data?.maxSlide) c.next()
 }
 </script>
 

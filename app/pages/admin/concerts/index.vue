@@ -29,12 +29,12 @@
         <span class="concerts-table__cell concerts-table__cell--actions">
           <button
             class="concerts-table__action concerts-table__action--edit"
-            title="Редактировать"
+            :aria-label="`Редактировать ${concert.city}`"
             @click="router.push(`/admin/concerts/${concert.id}`)"
           >✎</button>
           <button
             class="concerts-table__action concerts-table__action--delete"
-            title="Удалить"
+            :aria-label="`Удалить ${concert.city}`"
             @click="confirmDelete(concert)"
           >✕</button>
         </span>

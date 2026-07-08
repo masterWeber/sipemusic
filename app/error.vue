@@ -1,12 +1,12 @@
 <template>
-  <div class="error-page">
+  <main id="main-content" class="error-page">
     <div class="container error-content">
       <h1 class="error-title">404</h1>
       <p class="error-subtitle">Страница не найдена</p>
       <p class="error-text">Похоже, вы забрели не туда</p>
       <button class="error-btn" @click="handleError">На главную</button>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>

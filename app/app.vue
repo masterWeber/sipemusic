@@ -1,4 +1,5 @@
 <template>
+  <a href="#main-content" class="skip-link">Перейти к содержимому</a>
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
@@ -56,6 +57,22 @@ html {
 body {
   margin: 0;
   color: #ffffff;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 1000;
+  padding: 8px 16px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+  text-decoration: none;
+
+  &:focus {
+    top: 0;
+  }
 }
 
 .container {

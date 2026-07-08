@@ -52,7 +52,7 @@ onUnmounted(() => {
         <span class="line-3"></span>
         <span class="cross"></span>
       </button>
-      <nav class="nav">
+      <nav class="nav" aria-label="Основная навигация">
         <a href="#about" class="nav__link" @click="smoothScroll">О проекте</a>
         <a href="#concerts" class="nav__link" @click="smoothScroll">Концерты</a>
         <a href="#merch" class="nav__link" @click="smoothScroll">Мерч</a>
@@ -60,9 +60,9 @@ onUnmounted(() => {
       </nav>
     </div>
     <Teleport to="body">
-      <div class="mobile-menu" :class="{ 'mobile-menu--open': mobileOpen }">
+      <div class="mobile-menu" :class="{ 'mobile-menu--open': mobileOpen }" :aria-hidden="!mobileOpen">
         <div class="mobile-menu__backdrop" @click="closeMobile"></div>
-        <nav class="mobile-menu__nav">
+        <nav class="mobile-menu__nav" aria-label="Мобильная навигация">
           <a href="#about" class="mobile-menu__link" @click="smoothScroll">О проекте</a>
           <a href="#concerts" class="mobile-menu__link" @click="smoothScroll">Концерты</a>
           <a href="#merch" class="mobile-menu__link" @click="smoothScroll">Мерч</a>

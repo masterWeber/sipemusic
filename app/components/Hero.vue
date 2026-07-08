@@ -1,9 +1,9 @@
 <template>
   <section class="hero">
-    <div class="hero__poster"></div>
-    <video ref="videoRef" class="hero__bg" :class="{ 'hero__bg--ready': videoReady }" autoplay loop muted playsinline preload="auto" poster="/hero-bg-poster.jpg" disablepictureinpicture>
-      <source src="/hero-bg.mp4" type="video/mp4">
-      <source src="/hero-bg.webm" type="video/webm">
+    <div class="hero__poster" :style="{ backgroundImage: `url(/hero-bg-poster.jpg?v=${v})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }"></div>
+    <video ref="videoRef" class="hero__bg" :class="{ 'hero__bg--ready': videoReady }" autoplay loop muted playsinline preload="auto" :poster="`/hero-bg-poster.jpg?v=${v}`" fetchpriority="high" disablepictureinpicture>
+      <source :src="`/hero-bg.mp4?v=${v}`" type="video/mp4">
+      <source :src="`/hero-bg.webm?v=${v}`" type="video/webm">
     </video>
     <div class="hero__overlay"></div>
     <div class="container hero__content">
@@ -46,8 +46,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+const v = 1
 const videoRef = ref(null)
 const videoReady = ref(false)
+
+useHead({
+  link: [
+    { rel: 'preload', href: `/hero-bg-poster.jpg?v=${v}`, as: 'image', fetchpriority: 'high' },
+  ],
+})
 
 onMounted(() => {
   const video = videoRef.value
@@ -84,7 +91,6 @@ onMounted(() => {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/hero-bg-poster.jpg') center / cover no-repeat;
     z-index: 0;
     filter: brightness(0.6);
   }

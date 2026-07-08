@@ -10,7 +10,7 @@
         <div class="admin-layout__logo">S</div>
         <span v-if="!collapsed || hovered" class="admin-layout__title">SIPE Admin</span>
       </div>
-      <nav class="admin-layout__nav">
+      <nav class="admin-layout__nav" aria-label="Панель навигации">
         <NuxtLink
           to="/admin/concerts"
           class="admin-layout__link"
@@ -35,10 +35,11 @@
       class="admin-layout__toggle"
       :style="{ left: toggleLeft + 'px' }"
       @click="collapsed = !collapsed"
+      :aria-label="collapsed ? 'Развернуть панель' : 'Свернуть панель'"
     >
       {{ collapsed ? '→' : '←' }}
     </button>
-    <main class="admin-layout__content">
+    <main id="main-content" class="admin-layout__content">
       <div class="admin-layout__page">
         <slot />
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="login-page" :class="{ 'login-page--dark': isDark }">
+  <main id="main-content" class="login-page" :class="{ 'login-page--dark': isDark }">
     <div class="login-card">
       <div class="login-card__header">
         <div class="login-card__logo">S</div>
@@ -43,7 +43,7 @@
 
       <p v-if="error" class="login-card__error">{{ error }}</p>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
