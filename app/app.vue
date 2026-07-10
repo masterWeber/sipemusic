@@ -57,6 +57,7 @@ html {
 body {
   margin: 0;
   color: #ffffff;
+  font-family: var(--font-main);
 }
 
 .skip-link {

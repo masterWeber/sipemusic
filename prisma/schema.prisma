@@ -25,3 +25,28 @@ model Concert {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model AboutPhoto {
+  id        String   @id @default(cuid())
+  image     String
+  name      String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MerchItem {
+  id        String   @id @default(cuid())
+  image     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

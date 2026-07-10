@@ -110,7 +110,7 @@ async function login() {
   align-items: center;
   justify-content: center;
   background: var(--login-bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-main);
 }
 
 .login-card {

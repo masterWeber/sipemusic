@@ -19,6 +19,30 @@
           <span class="admin-layout__link-icon">♪</span>
           <span v-if="!collapsed || hovered" class="admin-layout__link-text">Концерты</span>
         </NuxtLink>
+        <NuxtLink
+          to="/admin/about-photos"
+          class="admin-layout__link"
+          :class="{ 'admin-layout__link--active': isAboutPhotosPage }"
+        >
+          <span class="admin-layout__link-icon">📷</span>
+          <span v-if="!collapsed || hovered" class="admin-layout__link-text">Фотографии</span>
+        </NuxtLink>
+        <NuxtLink
+          to="/admin/merch"
+          class="admin-layout__link"
+          :class="{ 'admin-layout__link--active': isMerchPage }"
+        >
+          <span class="admin-layout__link-icon">👕</span>
+          <span v-if="!collapsed || hovered" class="admin-layout__link-text">Мерч</span>
+        </NuxtLink>
+        <NuxtLink
+          to="/admin/settings"
+          class="admin-layout__link"
+          :class="{ 'admin-layout__link--active': isSettingsPage }"
+        >
+          <span class="admin-layout__link-icon">⚙</span>
+          <span v-if="!collapsed || hovered" class="admin-layout__link-text">Настройки</span>
+        </NuxtLink>
       </nav>
       <div class="admin-layout__sidebar-footer">
         <button class="admin-layout__link" @click="toggle">
@@ -55,6 +79,9 @@ const hovered = ref(false)
 const { isDark, toggle } = useDarkMode()
 
 const isConcertsPage = computed(() => route.path.startsWith('/admin/concerts'))
+const isAboutPhotosPage = computed(() => route.path.startsWith('/admin/about-photos'))
+const isMerchPage = computed(() => route.path.startsWith('/admin/merch'))
+const isSettingsPage = computed(() => route.path.startsWith('/admin/settings'))
 
 const toggleLeft = computed(() => {
   if (!collapsed.value) return 240
@@ -69,7 +96,7 @@ async function logout() {
 </script>
 
 <style lang="scss">
-.admin-layout {
+:root {
   --bg: #f0f2f5;
   --sidebar-bg: #fff;
   --sidebar-border: #e5e7eb;
@@ -100,44 +127,46 @@ async function logout() {
   --toggle-border: #e5e7eb;
   --toggle-color: #9ca3af;
   --toggle-hover: #3b82f6;
+}
 
-  &--dark {
-    --bg: #111827;
-    --sidebar-bg: #1f2937;
-    --sidebar-border: #374151;
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
-    --accent: #60a5fa;
-    --accent-hover: #3b82f6;
-    --danger: #f87171;
-    --danger-hover: #ef4444;
-    --card-bg: #1f2937;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --table-row-hover: #374151;
-    --table-header-bg: #374151;
-    --table-border: #374151;
-    --table-row-border: #374151;
-    --input-border: #4b5563;
-    --input-focus-ring: rgba(96, 165, 250, 0.2);
-    --input-placeholder: #6b7280;
-    --btn-secondary-bg: #374151;
-    --btn-secondary-hover: #4b5563;
-    --btn-secondary-text: #9ca3af;
-    --link-active-bg: #1e3a5f;
-    --link-hover-bg: #374151;
-    --danger-bg: #3b1c1c;
-    --danger-hover-bg: #4b2222;
-    --toggle-bg: #1f2937;
-    --toggle-border: #374151;
-    --toggle-color: #6b7280;
-    --toggle-hover: #60a5fa;
-  }
+:root.theme-dark {
+  --bg: #111827;
+  --sidebar-bg: #1f2937;
+  --sidebar-border: #374151;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+  --danger: #f87171;
+  --danger-hover: #ef4444;
+  --card-bg: #1f2937;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --table-row-hover: #374151;
+  --table-header-bg: #374151;
+  --table-border: #374151;
+  --table-row-border: #374151;
+  --input-border: #4b5563;
+  --input-focus-ring: rgba(96, 165, 250, 0.2);
+  --input-placeholder: #6b7280;
+  --btn-secondary-bg: #374151;
+  --btn-secondary-hover: #4b5563;
+  --btn-secondary-text: #9ca3af;
+  --link-active-bg: #1e3a5f;
+  --link-hover-bg: #374151;
+  --danger-bg: #3b1c1c;
+  --danger-hover-bg: #4b2222;
+  --toggle-bg: #1f2937;
+  --toggle-border: #374151;
+  --toggle-color: #6b7280;
+  --toggle-hover: #60a5fa;
+}
 
+.admin-layout {
   display: flex;
   min-height: 100vh;
   background: var(--bg);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-main);
 
   &__sidebar {
     width: 240px;

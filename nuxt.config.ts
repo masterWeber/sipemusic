@@ -17,6 +17,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'canonical', href: 'https://sipemusic.com' },
         { rel: 'preload', href: '/fonts/Terrakota sans Regular.otf', as: 'font', type: 'font/otf', crossorigin: 'anonymous' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap' },
       ],
     },
   },

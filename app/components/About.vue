@@ -54,28 +54,7 @@
 </template>
 
 <script setup>
-const members = ref([
-  { image: '/photo/Саша джу.webp', name: 'Саша Джу' },
-  { image: '/photo/Все.webp', name: 'Группа SIPE' },
-  { image: '/photo/конц.webp', name: 'Концерт SIPE' },
-  { image: '/photo/конц4.webp', name: 'Концерт SIPE' },
-  { image: '/photo/Джу конц.webp', name: 'Джу на концерте' },
-  { image: '/photo/сашаконц.webp', name: 'Саша на концерте' },
-  { image: '/photo/сипе.webp', name: 'SIPE' },
-  { image: '/photo/сашаконцспб.webp', name: 'Концерт в СПб' },
-  { image: '/photo/джу43.webp', name: 'Джу' },
-  { image: '/photo/Дмитрий.webp', name: 'Дмитрий' },
-  { image: '/photo/Антон.webp', name: 'Антон' },
-  { image: '/photo/Олег.webp', name: 'Олег' },
-  { image: '/photo/концмск.webp', name: 'Концерт в Москве' },
-  { image: '/photo/барабан.webp', name: 'Барабанщик' },
-  { image: '/photo/Виталь.webp', name: 'Виталий' },
-  { image: '/photo/автограф.webp', name: 'Автограф-сессия' },
-  { image: '/photo/концуцк.webp', name: 'Концерт в Уцке' },
-  { image: '/photo/концфото.webp', name: 'Фото с концерта' },
-  { image: '/photo/все2.webp', name: 'Группа SIPE' },
-])
-
+const members = ref([])
 const carouselRef = ref(null)
 const curSlide = ref(0)
 const perView = ref(4)
@@ -102,6 +81,15 @@ function next() {
   const c = carouselRef.value
   if (c && c.data?.currentSlide < c.data?.maxSlide) c.next()
 }
+
+onMounted(async () => {
+  try {
+    const data = await $fetch('/api/about-photos')
+    members.value = data
+  } catch {
+    members.value = []
+  }
+})
 </script>
 
 <style lang="scss" scoped>

@@ -40,31 +40,28 @@
         </div>
       </div>
       <div class="merch__btn-wrapper">
-        <a href="https://vk.com/market-55019377?screen=group" target="_blank" class="button-primary">Купить</a>
+        <a :href="settings?.merch_buy_url ?? '#'" target="_blank" class="button-primary">{{ settings?.merch_buy_text ?? 'Купить' }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-const images = [
-  'jKBJAoaonxyiCLrq0jKyA31SHKa1K4OtsPRbB8E5Ktww_nX71TQarVC5eQGxzQZM14IGCSsdRmYIx-6Oz54cttaq.jpg',
-  'oCKJTndwIPwrzPkS4WFDgWJygv0oNW4PXupELlMTfD0QWKw6sdH8R0_i8-JaYF6jHSk9K2wrA9jlJ4FStd1zDyF2.jpg',
-  'iaHJO635qz6Ayup4vLZ_mj-u7hfJ9-ilceQLO6tLXihcMfNRYXkuiWAmc3PcI55CrAKqIuoJjXFqd3naeEC1cViU.jpg',
-  'VHnJ54jd5V8u1DHWxMrxRjQz60bkMF37Sxd-IELXkp2ye6YZQR8YW-s3r_zb-dwBAFoVJyMAJvXTK18pT1UF0HIs.jpg',
-  'R2jSTrvhwzUGSkshRmP7_noLn0YwPNu8FI5ayUNtu7uLdPqlrJgwqIziuICTHq9Ki_iHABj9xWTNdFvJ5kDzIaXR.jpg',
-  'm6pEOw2-5R_PxJzaZ9OzhNU7t64xhiYZO4KP0stMkfndeuir-ZuoWpWK-tC8CKU3g_j5AbHKFNIc7Jy6X3eqUmy9.jpg',
-  'HvLXKEMZlSfYidQTwLjIwcrRyfeevgv3bsx6fks-vk9vZjM3xwt9HzDF34siA0IHxFIBkjYmll0FfD9Gw8GxnvQZ.jpg',
-  'pwcO7zpf22guR0ht2BL33udcDxOslUfM8BAUHTW7yXrSmez7vqdEHASYi8zZtMXldj5hqJQK776sIrgHTXLpHJhe.jpg',
-  '19ovFZMdx0WlaJIoiPwA1SgNXpnSEekOW1tQYzFuzL_L85D70ovJBkCEKDcQX5LmnWPFOL9NUHdOZH_a2NJ3JFYS.jpg',
-]
-
-const merchItems = ref(images.map(file => ({image: `/merch/${file.replace('.jpg', '.webp')}`})))
+const { settings } = useSiteSettings()
+const merchItems = ref([])
 
 const carouselRef = ref(null)
 const curSlide = ref(0)
 const perView = ref(5)
 const lightboxIndex = ref(null)
+
+onMounted(async () => {
+  try {
+    merchItems.value = await $fetch('/api/merch')
+  } catch (err) {
+    console.error('Failed to load merch', err)
+  }
+})
 
 const merchImages = computed(() => merchItems.value.map(i => i.image))
 
