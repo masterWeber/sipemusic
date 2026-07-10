@@ -40,7 +40,7 @@ useHead({
 
 @font-face {
   font-family: 'Terrakota Sans';
-  src: url('/fonts/Terrakota sans Regular.otf') format('opentype');
+  src: url('/fonts/TerrakotaSans-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
