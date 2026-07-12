@@ -29,5 +29,4 @@ logs
 *.sqlite
 
 # Uploaded images (admin panel)
-public/merch/
-public/about-photos/
+uploads/

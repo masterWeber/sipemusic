@@ -3,7 +3,17 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['vue3-carousel-nuxt', ['@nuxt/ui', { fonts: false }]],
   runtimeConfig: {
-    authSecret: '',
+    authSecret: process.env.NUXT_AUTH_SECRET || '',
+    docsUrl: process.env.DOCS_URL || '',
+    ridersUrl: process.env.RIDERS_URL || '',
+  },
+  nitro: {
+    experimental: {
+      tasks: true,
+    },
+    scheduledTasks: {
+      '0 3 * * *': ['cleanup-past-concerts'],
+    },
   },
   experimental: {
     inlineSSRStyles: true,

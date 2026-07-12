@@ -1,3 +1,6 @@
+import { unlinkSync } from 'fs'
+import { resolve } from 'path'
+
 export default defineEventHandler(async (event) => {
   const user = await getAuthenticatedUser(event)
   if (!user) {
@@ -11,12 +14,10 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, message: 'Item not found' })
   }
 
-  const filePath = `public${item.image}`
+  const filename = item.image.replace('/merch/', '')
   try {
-    await unlink(filePath)
-  } catch {
-    // file might not exist
-  }
+    unlinkSync(resolve(process.cwd(), 'uploads', filename))
+  } catch {}
 
   await prisma.merchItem.delete({ where: { id } })
 

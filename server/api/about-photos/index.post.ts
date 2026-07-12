@@ -1,4 +1,6 @@
 import sharp from 'sharp'
+import { mkdirSync } from 'fs'
+import { resolve } from 'path'
 
 export default defineEventHandler(async (event) => {
   const user = await getAuthenticatedUser(event)
@@ -25,7 +27,9 @@ export default defineEventHandler(async (event) => {
   const ext = 'webp'
   const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`
   const publicPath = `/about-photos/${filename}`
-  const filePath = `public${publicPath}`
+  const dir = resolve(process.cwd(), 'uploads')
+  mkdirSync(dir, { recursive: true })
+  const filePath = resolve(dir, filename)
 
   let pipeline = sharp(fileField.data)
 

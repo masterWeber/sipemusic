@@ -1,4 +1,4 @@
 export default defineEventHandler((event) => {
-  const ridersUrl = process.env.RIDERS_URL || '/'
-  return sendRedirect(event, ridersUrl, 302)
+  const config = useRuntimeConfig()
+  return sendRedirect(event, config.ridersUrl || '/', 302)
 })

@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build && cp prisma/dev.db .output/server/db.sqlite",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
