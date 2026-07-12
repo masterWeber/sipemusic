@@ -16,6 +16,27 @@
         </div>
 
         <div class="concert-form__field">
+          <label class="concert-form__label" for="time">Время</label>
+          <input
+            id="time"
+            v-model="form.time"
+            class="concert-form__input"
+            type="time"
+          />
+        </div>
+
+        <div class="concert-form__field concert-form__field--inline">
+          <label class="concert-form__checkbox-label">
+            <input
+              v-model="form.showTime"
+              class="concert-form__checkbox"
+              type="checkbox"
+            />
+            Показывать время на сайте
+          </label>
+        </div>
+
+        <div class="concert-form__field">
           <label class="concert-form__label" for="city">Город</label>
           <input
             id="city"
@@ -71,6 +92,8 @@ const saving = ref(false)
 
 const form = reactive({
   date: '',
+  time: '18:00',
+  showTime: false,
   city: '',
   venue: '',
   ticketUrl: '',
@@ -119,6 +142,11 @@ async function save() {
     display: flex;
     flex-direction: column;
     gap: 6px;
+
+    &--inline {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__label {
@@ -145,6 +173,19 @@ async function save() {
     &::placeholder {
       color: var(--input-placeholder);
     }
+  }
+
+  &__checkbox {
+    accent-color: var(--accent);
+  }
+
+  &__checkbox-label {
+    font-size: 14px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   &__actions {

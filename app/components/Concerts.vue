@@ -9,7 +9,7 @@
           :key="concert.id || index"
           class="concert-item"
         >
-          <span class="concert-item__date">{{ formatDate(concert.date) }}</span>
+          <span class="concert-item__date">{{ formatDate(concert.date) }}<template v-if="concert.showTime && concert.time">, {{ concert.time }}</template></span>
           <span class="concert-item__city">{{ concert.city }}</span>
           <span class="concert-item__venue">{{ concert.venue }}</span>
           <a

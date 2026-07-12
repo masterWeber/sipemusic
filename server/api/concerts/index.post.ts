@@ -13,6 +13,8 @@ export default defineEventHandler(async (event) => {
   const concert = await prisma.concert.create({
     data: {
       date: new Date(body.date),
+      time: body.time || null,
+      showTime: body.showTime ?? false,
       city: body.city,
       venue: body.venue,
       ticketUrl: body.ticketUrl || null,

@@ -19,6 +19,8 @@ model User {
 model Concert {
   id        String   @id @default(cuid())
   date      DateTime
+  time      String?
+  showTime  Boolean  @default(false)
   city      String
   venue     String
   ticketUrl String?

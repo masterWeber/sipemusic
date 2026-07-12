@@ -12,7 +12,7 @@ export default defineNuxtConfig({
       tasks: true,
     },
     scheduledTasks: {
-      '0 3 * * *': ['cleanup-past-concerts'],
+      '*/10 * * * *': ['cleanup-past-concerts'],
     },
   },
   experimental: {

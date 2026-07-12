@@ -14,6 +14,7 @@
     <div v-else class="concerts-table">
       <div class="concerts-table__header">
         <span class="concerts-table__cell concerts-table__cell--date">Дата</span>
+        <span class="concerts-table__cell concerts-table__cell--time">Время</span>
         <span class="concerts-table__cell concerts-table__cell--city">Город</span>
         <span class="concerts-table__cell concerts-table__cell--venue">Площадка</span>
         <span class="concerts-table__cell concerts-table__cell--actions"></span>
@@ -24,6 +25,7 @@
         class="concerts-table__row"
       >
         <span class="concerts-table__cell concerts-table__cell--date">{{ formatDate(concert.date) }}</span>
+        <span class="concerts-table__cell concerts-table__cell--time">{{ concert.time || '—' }}</span>
         <span class="concerts-table__cell concerts-table__cell--city">{{ concert.city }}</span>
         <span class="concerts-table__cell concerts-table__cell--venue">{{ concert.venue }}</span>
         <span class="concerts-table__cell concerts-table__cell--actions">
@@ -171,7 +173,7 @@ fetchConcerts()
 
   &__header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 80px;
+    grid-template-columns: 1fr 70px 1fr 1fr 80px;
     padding: 14px 20px;
     background: var(--table-header-bg);
     border-bottom: 1px solid var(--table-border);
@@ -179,7 +181,7 @@ fetchConcerts()
 
   &__row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 80px;
+    grid-template-columns: 1fr 70px 1fr 1fr 80px;
     padding: 14px 20px;
     border-bottom: 1px solid var(--table-row-border);
     align-items: center;
@@ -199,6 +201,11 @@ fetchConcerts()
 
     &--date {
       font-weight: 500;
+    }
+
+    &--time {
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
     }
 
     &--actions {

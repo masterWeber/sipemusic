@@ -16,6 +16,27 @@
         </div>
 
         <div class="concert-form__field">
+          <label class="concert-form__label" for="time">Время</label>
+          <input
+            id="time"
+            v-model="form.time"
+            class="concert-form__input"
+            type="time"
+          />
+        </div>
+
+        <div class="concert-form__field concert-form__field--inline">
+          <label class="concert-form__checkbox-label">
+            <input
+              v-model="form.showTime"
+              class="concert-form__checkbox"
+              type="checkbox"
+            />
+            Показывать время на сайте
+          </label>
+        </div>
+
+        <div class="concert-form__field">
           <label class="concert-form__label" for="city">Город</label>
           <input
             id="city"
@@ -73,6 +94,8 @@ const loading = ref(true)
 
 const form = reactive({
   date: '',
+  time: '',
+  showTime: false,
   city: '',
   venue: '',
   ticketUrl: '',
@@ -85,6 +108,8 @@ async function loadConcert() {
     return router.push('/admin/concerts')
   }
   form.date = concert.date.slice(0, 10)
+  form.time = concert.time || '18:00'
+  form.showTime = concert.showTime ?? false
   form.city = concert.city
   form.venue = concert.venue
   form.ticketUrl = concert.ticketUrl || ''
@@ -136,6 +161,11 @@ loadConcert()
     display: flex;
     flex-direction: column;
     gap: 6px;
+
+    &--inline {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__label {
@@ -162,6 +192,19 @@ loadConcert()
     &::placeholder {
       color: var(--input-placeholder);
     }
+  }
+
+  &__checkbox {
+    accent-color: var(--accent);
+  }
+
+  &__checkbox-label {
+    font-size: 14px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   &__actions {
