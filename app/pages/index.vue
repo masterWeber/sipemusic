@@ -3,8 +3,8 @@
     <VideoSmoke />
     <Header />
     <Hero />
-    <About />
     <Concerts />
+    <About />
     <Merch />
     <Footer />
   </div>
