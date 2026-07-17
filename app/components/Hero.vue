@@ -7,7 +7,9 @@
     </video>
     <div class="hero__overlay"></div>
     <div class="container hero__content">
-      <h1 class="hero__title">{{ settings?.hero_title ?? 'S I P E' }}</h1>
+      <h1 class="hero__title">
+        <img src="/Header_TEXT_12fps-ezgif.com-optimize.gif" alt="S I P E" class="hero__logo-img">
+      </h1>
       <p class="hero__subtitle">&nbsp;{{ settings?.hero_subtitle ?? 'Живая электроника' }}</p>
       <div class="hero__platforms">
         <div class="hero__platforms-icons">
@@ -132,19 +134,27 @@ onMounted(() => {
 
   &__title {
     margin: 0;
-    font-family: var(--font-logo);
-    font-size: 260px;
-    font-weight: 400;
-    line-height: 1;
-    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo-img {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
 
     @media (max-width: 960px) {
-      font-size: 160px;
+      max-width: 260px;
+    }
+
+    @media (max-width: 640px) {
+      max-width: 200px;
     }
   }
 
   &__subtitle {
-    margin: 0;
+    margin-top: 20px;
     font-size: clamp(1rem, 2vw, 22px);
     font-weight: 300;
     letter-spacing: 10px;
